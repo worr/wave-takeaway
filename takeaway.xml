@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-<ModulePrefs title="Takeaway" height="120">
+<ModulePrefs title="Takeaway">
     <Require feature="wave" />
     <Require feature="dynamic-height" />
     <Require feature="locked-domain" />
@@ -35,7 +35,13 @@
             var taken = parseInt(wave.getState().get('taken'));
             var validity = wave.getState().get('valid');
 
-            div.innerHTML = "<h1>Takeaway</h1>";
+            div.innerHTML = "<h2>Takeaway</h2>";
+            div.innerHTML += "<br />";
+            div.innerHTML += "<strong>Players take turns removing 1-3 coins from ";
+            div.innerHTML += "a pile of pennies on the table. The player left ";
+            div.innerHTML += "taking the last penny loses</strong>";
+            div.innerHTML += "<br />";
+            div.innerHTML += "<br />";
             div.innerHTML += "There are " + coins + " coins left.";
             div.innerHTML += "<br />";
             div.innerHTML += "The last person to take away was " + taker + " .";
@@ -81,6 +87,7 @@
 
         function reset() {
             wave.getState().submitDelta({'coins': genCoins(), 'taker': 'nobody', 'taken': '1', 'valid': 'true'});
+            document.getElementyById("textTake").value = "";
         }
 
         function init() {
