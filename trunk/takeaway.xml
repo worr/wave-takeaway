@@ -13,12 +13,13 @@
             if (!wave.getState().get('coins')) {
                 delta = {};
                 delta['coins'] = '20';
-                delta['taker'] = 'none';
+                delta['taker'] = 'nobody';
 
                 wave.getState().submitDelta(delta);
             }
 
             div.innerHTML = "There are " + wave.getState().get('coins', '0') + " left";
+            div.innerHTML += "<br />";
             div.innerHTML += "The last person to take away was " + wave.getState().get('taker');
         }
 
@@ -30,12 +31,12 @@
             delta = {};
             currentAmt -= amount;
             delta['coins'] = currentAmt;
-            dleta['taker'] = taker;
+            delta['taker'] = taker;
             state.submitDelta(delta);
         }
 
         function reset() {
-            wave.getState().submitDelta({'coins': '20', 'taker': 'None'});
+            wave.getState().submitDelta({'coins': '20', 'taker': 'nobody'});
         }
 
         function init() {
