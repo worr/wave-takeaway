@@ -60,6 +60,8 @@
             if (coins == 0) {
                 div.innerHTML += taker + " loses!";
             }
+
+            gadgets.window.adjustHeight(); 
         }
 
         function take() {
