@@ -56,7 +56,7 @@
         }
 
         function reset() {
-            wave.getState().submitDelta({'coins': '20', 'taker': 'nobody'});
+            wave.getState().submitDelta({'coins': '20', 'taker': 'nobody', 'taken': '1'});
         }
 
         function init() {
