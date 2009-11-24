@@ -40,7 +40,6 @@
             div.innerHTML += "<small>a pile of pennies on the table. The </small>";
             div.innerHTML += "<small>player left taking the last penny loses</small>";
             div.innerHTML += "<br />";
-            div.innerHTML += "<br />";
             div.innerHTML += "There are " + coins + " coins left.";
             div.innerHTML += "<br />";
             div.innerHTML += "The last person to take away was " + taker + " .";
@@ -104,6 +103,8 @@
     <input type="text" id="textTake" />
     <input type="button" value="Take!" id="butTake" onClick="take()" />
     <input type="button" value="Reset" id="butReset" onClick="reset()" />
+    <br />
+    <br />
 ]]>
 </Content>
 </Module>
