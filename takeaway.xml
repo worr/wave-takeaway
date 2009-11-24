@@ -2,10 +2,12 @@
 <Module>
 <ModulePrefs title="Takeaway" height="120">
     <Require feature="wave" />
+    <Require feature="dynamic-height" />
+    <Require feature="locked-domain" />
 </ModulePrefs>
 <Content type="html">
 <![CDATA[
-    <div id="content_div" style="height: 90px;"></div>
+    <div id="content_div"></div>
     <script type="text/javascript">
         var div = document.getElementById('content_div');
 
