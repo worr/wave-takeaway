@@ -18,9 +18,17 @@
                 wave.getState().submitDelta(delta);
             }
 
-            div.innerHTML = "There are " + wave.getState().get('coins', '0') + " left";
+            var coins = wave.getState().get('coins', '0');
+            var taker = wave.getState().get('taker');
+
+            div.innerHTML = "There are " + coins + " left.";
             div.innerHTML += "<br />";
-            div.innerHTML += "The last person to take away was " + wave.getState().get('taker');
+            div.innerHTML += "The last person to take away was " + taker " .";
+
+            if (coins == 0) {
+                div.innerHTML += "<br />";
+                div.innerHTML += taker + " is the loser!";
+            }
         }
 
         function take() {
@@ -34,9 +42,6 @@
                 delta['coins'] = currentAmt;
                 delta['taker'] = taker;
                 state.submitDelta(delta);
-                if (currentAmt == 0) {
-                    div.innerHTML += taker + " loses!";
-                }
             }
         }
 
