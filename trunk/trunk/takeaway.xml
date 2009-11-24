@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+<ModulePrefs title="Takeaway" height="50">
+    <Require feature="wave" />
+</ModulePrefs>
+<Content type="html">
+<![CDATA[
+    <data id="content_div" style="height: 50px;"></div>
+    <script type="text/javascript">
+        var div = document.getElementById('content_div');
+
+        function stateUpdated() {
+            div.innerHTML = "There are " + wave.getState().get('coins', '0') + " left";
+            div.innerHTML = "The last person to take away was " + wave.getState().get('taker')
+        }
+
+        function take() {
+            var amount = parseInt(document.getElementById('textTake').value);
+            var taker = wave.getViewer().getId();
+            var state = wave.getState();
+            var currentAmt = parseInt(state.get('coins', '0'));
+            delta = {};
+            currentAmt -= amount;
+            delta['coins'] = currentAmt;
+            dleta['taker'] = taker;
+            state.submitDelta(delta);
+        }
+
+        function reset() {
+            wave.getState().submitDelta({'coins': '20', 'taker': 'None'});
+        }
+
+        function init() {
+            if (wave && wave.isInWaveContainer()) {
+                wave.setStateCallback(stateUpdated);
+                wave.setParticipantCallback(stateUpdated);
+
+                wave.getState().submitDelta({'coins': '20', 'taker': 'None'});
+            }
+        }
+
+        gadgets.util.registerOnLoadHandler(init);
+
+    </script>
+    <input type="text" id="textTake" />
+    <input type="button" value="Take!" id="butTake" onClick="take()" />
+    <input type="button" value="Reset" id="butReset" onClick="reset()" />
+]]>
+</Content>
+</Module>
