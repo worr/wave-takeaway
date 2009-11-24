@@ -19,7 +19,7 @@
                 wave.getState().submitDelta(delta);
             }
 
-            var coins = wave.getState().get('coins');
+            var coins = parseInt(wave.getState().get('coins'));
             var taker = wave.getState().get('taker');
             var taken = parseInt(wave.getState().get('taken'));
 
