@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-<ModulePrefs title="Takeaway" height="100">
+<ModulePrefs title="Takeaway" height="120">
     <Require feature="wave" />
 </ModulePrefs>
 <Content type="html">
 <![CDATA[
-    <div id="content_div" style="height: 60px;"></div>
+    <div id="content_div" style="height: 90px;"></div>
     <script type="text/javascript">
         var div = document.getElementById('content_div');
 
@@ -14,19 +14,27 @@
                 delta = {};
                 delta['coins'] = '20';
                 delta['taker'] = 'nobody';
+                delta['taken'] = '1';
 
                 wave.getState().submitDelta(delta);
             }
 
             var coins = wave.getState().get('coins');
             var taker = wave.getState().get('taker');
+            var taken = wave.getState().get('taken');
 
             div.innerHTML = "There are " + coins + " left.";
             div.innerHTML += "<br />";
             div.innerHTML += "The last person to take away was " + taker + " .";
+            div.innerHTML += "<br />";
+
+            if (taken > 3 || taken < 1 || taken > coins) {
+                div.innerHTML += "Invalid move " + taken + ".";
+                div.innerHTML += "<br />";
+                div.innerHTML += "Try again " + taker + ".";
+            }
 
             if (coins == '0') {
-                div.innerHTML += "<br />";
                 div.innerHTML += taker + " is the loser!";
             }
         }
@@ -36,13 +44,15 @@
             var taker = wave.getViewer().getId();
             var state = wave.getState();
             var currentAmt = parseInt(state.get('coins', '0'));
+            var delta = {};
+            delta['taker'] = taker;
+            delta['taken'] = amount;
             if (amount < 4 && amount > 0 && amount <= currentAmt) {
-                delta = {};
                 currentAmt -= amount;
                 delta['coins'] = currentAmt;
-                delta['taker'] = taker;
-                state.submitDelta(delta);
             }
+
+            state.submitDelta(delta);
         }
 
         function reset() {
