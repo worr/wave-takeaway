@@ -36,7 +36,6 @@
             var validity = wave.getState().get('valid');
 
             div.innerHTML = "<h2>Takeaway</h2>";
-            div.innerHTML += "<br />";
             div.innerHTML += "<small>Players take turns removing 1-3 coins from </small>";
             div.innerHTML += "<small>a pile of pennies on the table. The </small>";
             div.innerHTML += "<small>player left taking the last penny loses</small>";
