@@ -18,14 +18,14 @@
                 wave.getState().submitDelta(delta);
             }
 
-            var coins = wave.getState().get('coins', '0');
+            var coins = wave.getState().get('coins');
             var taker = wave.getState().get('taker');
 
             div.innerHTML = "There are " + coins + " left.";
             div.innerHTML += "<br />";
-            div.innerHTML += "The last person to take away was " + taker " .";
+            div.innerHTML += "The last person to take away was " + taker + " .";
 
-            if (coins == 0) {
+            if (coins == '0') {
                 div.innerHTML += "<br />";
                 div.innerHTML += taker + " is the loser!";
             }
