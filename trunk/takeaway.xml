@@ -5,11 +5,19 @@
 </ModulePrefs>
 <Content type="html">
 <![CDATA[
-    <div id="content_div" style="height: 50px;"></div>
+    <div id="content_div" style="height: 100px;"></div>
     <script type="text/javascript">
         var div = document.getElementById('content_div');
 
         function stateUpdated() {
+            if (!wave.getState().get('coins', '0')) {
+                delta = {};
+                delta['coins'] = '20';
+                delta['taker'] = 'none';
+
+                wave.getState().submitDelta(delta);
+            }
+
             div.innerHTML = "There are " + wave.getState().get('coins', '0') + " left";
             div.innerHTML = "The last person to take away was " + wave.getState().get('taker');
         }
@@ -34,8 +42,6 @@
             if (wave && wave.isInWaveContainer()) {
                 wave.setStateCallback(stateUpdated);
                 wave.setParticipantCallback(stateUpdated);
-
-                wave.getState().submitDelta({'coins': '20', 'taker': 'None'});
             }
         }
 
