@@ -28,7 +28,7 @@
             var taker = wave.getViewer().getId();
             var state = wave.getState();
             var currentAmt = parseInt(state.get('coins', '0'));
-            if (amount < 4 && amount > 0 && amount >= currentAmt) {
+            if (amount < 4 && amount > 0 && amount <= currentAmt) {
                 delta = {};
                 currentAmt -= amount;
                 delta['coins'] = currentAmt;
