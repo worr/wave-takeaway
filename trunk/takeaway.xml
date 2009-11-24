@@ -21,7 +21,7 @@
 
             var coins = wave.getState().get('coins');
             var taker = wave.getState().get('taker');
-            var taken = wave.getState().get('taken');
+            var taken = parseInt(wave.getState().get('taken'));
 
             div.innerHTML = "There are " + coins + " left.";
             div.innerHTML += "<br />";
