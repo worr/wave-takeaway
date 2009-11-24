@@ -37,9 +37,9 @@
 
             div.innerHTML = "<h2>Takeaway</h2>";
             div.innerHTML += "<br />";
-            div.innerHTML += "<strong>Players take turns removing 1-3 coins from ";
-            div.innerHTML += "a pile of pennies on the table. The player left ";
-            div.innerHTML += "taking the last penny loses</strong>";
+            div.innerHTML += "<small>Players take turns removing 1-3 coins from </small>";
+            div.innerHTML += "<small>a pile of pennies on the table. The </small>";
+            div.innerHTML += "<small>player left taking the last penny loses</small>";
             div.innerHTML += "<br />";
             div.innerHTML += "<br />";
             div.innerHTML += "There are " + coins + " coins left.";
