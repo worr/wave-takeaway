@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-<ModulePrefs title="Takeaway" height="50">
+<ModulePrefs title="Takeaway" height="100">
     <Require feature="wave" />
 </ModulePrefs>
 <Content type="html">
@@ -10,7 +10,7 @@
         var div = document.getElementById('content_div');
 
         function stateUpdated() {
-            if (!wave.getState().get('coins', '0')) {
+            if (!wave.getState().get('coins')) {
                 delta = {};
                 delta['coins'] = '20';
                 delta['taker'] = 'none';
