@@ -22,19 +22,20 @@
             var coins = parseInt(wave.getState().get('coins'));
             var taker = wave.getState().get('taker');
             var taken = parseInt(wave.getState().get('taken'));
+            var validity = wave.getState().get('valid');
 
             div.innerHTML = "There are " + coins + " left.";
             div.innerHTML += "<br />";
             div.innerHTML += "The last person to take away was " + taker + " .";
             div.innerHTML += "<br />";
 
-            if (taken > 3 || taken < 1 || taken > coins) {
+            if (validity == 'false') {
                 div.innerHTML += "Invalid move " + taken + ".";
                 div.innerHTML += "<br />";
                 div.innerHTML += "Try again " + taker + ".";
             }
 
-            if (coins == '0') {
+            if (coins == 0) {
                 div.innerHTML += taker + " is the loser!";
             }
         }
@@ -50,13 +51,16 @@
             if (amount < 4 && amount > 0 && amount <= currentAmt) {
                 currentAmt -= amount;
                 delta['coins'] = currentAmt;
+                delta['valid'] = 'true';
+            } else {
+                delta['valid'] = 'false';
             }
 
             state.submitDelta(delta);
         }
 
         function reset() {
-            wave.getState().submitDelta({'coins': '20', 'taker': 'nobody', 'taken': '1'});
+            wave.getState().submitDelta({'coins': '20', 'taker': 'nobody', 'taken': '1', 'valid': 'true'});
         }
 
         function init() {
