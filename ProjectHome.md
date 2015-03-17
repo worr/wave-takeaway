@@ -1,0 +1,1 @@
+This project aims to implement a simple takeaway game in Google Wave.
